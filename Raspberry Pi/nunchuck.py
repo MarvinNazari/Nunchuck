@@ -32,7 +32,9 @@ class nunchuck:
       print "Unable to determine Raspberry Pi revision."
       exit
     self.bus = SMBus(i2c_bus)
-    self.bus.write_byte_data(0x52,0x40,0x00)
+    self.bus.write_byte_data(0x52,0xF0,0x55)
+    time.sleep(0.1)
+    self.bus.write_byte_data(0x52,0xFB,0x00)
     time.sleep(0.1)
 
   def read(self):
